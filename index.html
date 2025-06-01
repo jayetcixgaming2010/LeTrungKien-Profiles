@@ -319,9 +319,13 @@
                 font-size: 2rem;
             }
         }
+        #audio, audio {
+    display: none;
+}
     </style>
 </head>
 <body class="dark-mode">
+    <audio id="bg-music" src="music.mp3" autoplay loop></audio>
     <div id="particles-js"></div>
     <button id="theme-toggle" class="theme-toggle">
         <svg id="moon-icon" class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -415,7 +419,7 @@
                 document.querySelector('.footer-content').style.background = 'linear-gradient(90deg, #60a5fa, #c4b5fd)';
             } else {
                 document.body.style.background = 'linear-gradient(135deg, #030712, #0e1733, #1e2447)';
-                document.querySelectorAll('.nav-btn').forEach(btn => btn.style.background = 'linear-gradient(90deg, #9333ea, #a855f7)');
+                document.querySelectorAll('.nav-btn').forEach(btn => btn.style.background = 'linear-gradient(90deg, #7e22ce, #a855f7)');
                 document.querySelector('.theme-toggle').style.background = 'linear-gradient(45deg, #9333ea, #22d3ee)';
                 document.querySelector('.back-to-top').style.background = 'linear-gradient(45deg, #9333ea, #22d3ee)';
                 document.querySelector('.footer-content').style.background = 'linear-gradient(90deg, #9333ea, #22d3ee)';
