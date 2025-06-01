@@ -34,9 +34,9 @@
             backdrop-filter: blur(20px);
             border: 2px solid rgba(147, 51, 234, 0.6);
             border-radius: 35px;
-            max-width: 450px; /* Giảm chiều ngang của container */
+            max-width: 400px; /* Giảm thêm chiều ngang */
             margin: 50px auto;
-            padding: 30px;    /* Giảm padding */
+            padding: 20px;    /* Giảm padding */
             padding-bottom: 60px;
             position: relative;
             box-shadow: 0 0 50px rgba(147, 51, 234, 0.6);
@@ -45,6 +45,7 @@
             align-items: center;
             justify-content: flex-start;
             min-height: 150vh;
+            box-sizing: border-box; /* Bao gồm border và padding trong max-width */
         }
         .avatar {
             width: 180px;
@@ -84,7 +85,7 @@
         }
         .title {
             font-family: 'Montserrat', sans-serif;
-            font-size: 2rem; /* Giảm font-size để phù hợp với container hẹp */
+            font-size: 2rem;
             background: linear-gradient(90deg, #9333ea, #22d3ee, #f472b6);
             background-size: 300%;
             -webkit-background-clip: text;
@@ -122,18 +123,19 @@
             100% { background-position: 300%; }
         }
         .bio {
-            font-size: 1.2rem; /* Giảm font-size để phù hợp với container hẹp */
+            font-size: 1.2rem;
             background: linear-gradient(90deg, #a3bffa, #f9a8d4, #c4b5fd);
             background-size: 300%;
             -webkit-background-clip: text;
             color: transparent;
             text-align: center;
             margin: 10px 0;
-            padding: 20px;
+            padding: 15px; /* Giảm padding */
             border-radius: 20px;
             animation: cosmicText 5s ease infinite;
             text-shadow: 0 0 10px rgba(163, 191, 250, 0.5);
             max-width: 100%; /* Đảm bảo không vượt quá container */
+            word-wrap: break-word; /* Cho phép text xuống dòng */
         }
         .bio::before {
             content: '';
@@ -157,8 +159,8 @@
         .nav-btn {
             font-family: 'Roboto', sans-serif;
             display: block;
-            width: 90%;
-            max-width: 350px; /* Giảm max-width để phù hợp với container */
+            width: 85%; /* Giảm width để hẹp hơn */
+            max-width: 300px; /* Giảm max-width */
             margin: 10px auto;
             padding: 16px 24px;
             background: linear-gradient(90deg, #7e22ce, #a855f7);
@@ -345,7 +347,7 @@
     </div>
     <footer class="footer">
         <div class="footer-content">
-            @Website Made By <span class="footer-name">Lê Trung Kiên</span><span>💖</span> | 04:05 PM +07, Sunday, June 01, 2025
+            @Website Made By <span class="footer-name">Lê Trung Kiên</span><span>💖</span> | 04:20 PM +07, Sunday, June 01, 2025
         </div>
     </footer>
     <button id="back-to-top" class="back-to-top">
