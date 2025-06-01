@@ -1,30 +1,439 @@
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lê Trung Kiên</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bio Cá Nhân - Lê Trung Kiên</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400&display=swap" rel="stylesheet" />
+    <style>
+        body {
+            background: linear-gradient(135deg, #030712, #0e1733, #1e2447);
+            background-size: 500% 500%;
+            animation: cosmicFlow 20s ease infinite;
+            min-height: 200vh;
+            display: flex;
+            flex-direction: column;
+            margin: 0;
+            color: #e2e8f0;
+            font-family: 'Roboto', sans-serif;
+            overflow-x: hidden;
+            position: relative;
+            border: 2px solid rgba(147, 51, 234, 0.6);
+            box-shadow: 0 0 20px rgba(147, 51, 234, 0.8);
+        }
+        @keyframes cosmicFlow {
+            0% { background-position: 0% 0%; }
+            50% { background-position: 100% 100%; }
+            100% { background-position: 0% 0%; }
+        }
+        .container {
+            background: linear-gradient(135deg, rgba(3, 7, 18, 0.8), rgba(14, 23, 51, 0.8));
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(147, 51, 234, 0.6);
+            border-radius: 35px;
+            max-width: 950px;
+            margin: 50px auto;
+            padding: 40px;
+            padding-bottom: 60px;
+            position: relative;
+            box-shadow: 0 0 50px rgba(147, 51, 234, 0.6);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 150vh;
+        }
+        .avatar {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border: 12px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            box-shadow: 0 0 40px rgba(147, 51, 234, 0.8);
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            position: relative;
+            z-index: 1;
+        }
+        .avatar:hover {
+            transform: scale(1.25);
+            box-shadow: 0 0 60px rgba(147, 51, 234, 1), 0 0 100px rgba(34, 211, 238, 0.8);
+        }
+        .avatar::after {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: -20px;
+            bottom: -20px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(147, 51, 234, 0.5), transparent);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: -1;
+        }
+        .avatar:hover::after {
+            opacity: 1;
+            animation: cosmicWave 2s ease infinite;
+        }
+        @keyframes cosmicWave {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+        .title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            background: linear-gradient(90deg, #9333ea, #22d3ee, #f472b6);
+            background-size: 300%;
+            -webkit-background-clip: text;
+            color: transparent;
+            animation: cosmicText 4s ease infinite;
+            text-shadow: 0 0 10px rgba(147, 51, 234, 0.5);
+            text-align: center;
+            margin-top: 20px;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+        .title.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 1.5s ease, transform 1.5s ease;
+        }
+        .title::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 120%;
+            height: 120%;
+            background: radial-gradient(circle, rgba(147, 51, 234, 0.3), transparent);
+            transform: translate(-50%, -50%);
+            opacity: 0.7;
+            animation: glowPulse 2s ease-in-out infinite;
+        }
+        @keyframes glowPulse {
+            0%, 100% { opacity: 0.7; transform: translate(-50%, -50%) scale(1); }
+            50% { opacity: 0.9; transform: translate(-50%, -50%) scale(1.1); }
+        }
+        @keyframes cosmicText {
+            0% { background-position: 0%; }
+            100% { background-position: 300%; }
+        }
+        .bio {
+            font-size: 1.35rem;
+            background: linear-gradient(90deg, #a3bffa, #f9a8d4, #c4b5fd);
+            background-size: 300%;
+            -webkit-background-clip: text;
+            color: transparent;
+            text-align: center;
+            margin: 10px 0; /* Giảm margin để gần .nav-buttons hơn */
+            padding: 20px;
+            border-radius: 20px;
+            animation: cosmicText 5s ease infinite;
+            text-shadow: 0 0 10px rgba(163, 191, 250, 0.5);
+        }
+        .bio::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(163, 191, 250, 0.2), rgba(249, 168, 212, 0.2));
+            border-radius: 20px;
+            z-index: -1;
+            box-shadow: 0 0 20px rgba(163, 191, 250, 0.3);
+        }
+        .nav-buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            margin-top: 0; /* Giảm margin-top để gần .bio hơn */
+        }
+        .nav-btn {
+            font-family: 'Roboto', sans-serif;
+            display: block;
+            width: 90%;
+            max-width: 900px;
+            margin: 10px auto;
+            padding: 16px 24px;
+            background: linear-gradient(90deg, #7e22ce, #a855f7);
+            border-radius: 30px;
+            text-align: center;
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 1.1rem;
+            box-shadow: 0 0 15px rgba(126, 34, 206, 0.8);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            border: 2px solid rgba(147, 51, 234, 0.6);
+        }
+        .nav-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(126, 34, 206, 1);
+        }
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 50;
+            background: linear-gradient(45deg, #9333ea, #22d3ee);
+            border-radius: 50%;
+            padding: 16px;
+            cursor: pointer;
+            transition: transform 0.5s ease;
+            box-shadow: 0 0 25px rgba(147, 51, 234, 0.7);
+        }
+        .theme-toggle:hover {
+            transform: rotate(360deg);
+            box-shadow: 0 0 40px rgba(147, 51, 234, 1);
+        }
+        #particles-js {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        .star {
+            position: absolute;
+            color: #e0e7ff;
+            font-size: 0.9em;
+            opacity: 0.9;
+            animation: fallStar 5s linear infinite;
+            text-shadow: 0 0 10px rgba(224, 231, 255, 0.8);
+        }
+        @keyframes fallStar {
+            0% { transform: translateY(-10vh) scale(0.4); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(110vh) scale(1.2); opacity: 0; }
+        }
+        .star::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 2px;
+            height: 20px;
+            background: linear-gradient(to bottom, rgba(224, 231, 255, 0.8), transparent);
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+        .footer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 25px 0;
+            background: linear-gradient(135deg, rgba(3, 7, 18, 0.7), rgba(14, 23, 51, 0.7), rgba(30, 36, 71, 0.7));
+            backdrop-filter: blur(25px);
+            margin-top: auto;
+            font-size: 1rem;
+            color: #d1d5db;
+            width: 100%;
+            position: relative;
+        }
+        .footer-content {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(90deg, #9333ea, #22d3ee);
+            background-size: 300%;
+            -webkit-background-clip: text;
+            color: transparent;
+            animation: cosmicText 4s ease infinite;
+            text-shadow: 0 0 15px rgba(147, 51, 234, 0.7);
+            opacity: 0;
+        }
+        .footer-content.visible {
+            opacity: 1;
+            transition: opacity 2s ease-in-out;
+        }
+        .footer-name {
+            position: relative;
+            display: inline-block;
+            margin: 0 5px;
+        }
+        .footer-name::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(147, 51, 234, 0.5), transparent);
+            transform: translate(-50%, -50%);
+            opacity: 0.5;
+            animation: glowPulse 2s ease-in-out infinite;
+        }
+        .footer span {
+            color: #f472b6;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { color: #f472b6; }
+            50% { color: #ec4899; }
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 50;
+            background: linear-gradient(45deg, #9333ea, #22d3ee);
+            border-radius: 50%;
+            padding: 14px;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 0 25px rgba(147, 51, 234, 0.7);
+        }
+        .back-to-top.visible {
+            opacity: 1;
+        }
+        .back-to-top:hover {
+            transform: scale(1.15);
+            box-shadow: 0 0 40px rgba(147, 51, 234, 1);
+        }
+        @media (max-width: 600px) {
+            .container {
+                max-width: 100%;
+                padding: 20px;
+                margin: 20px auto;
+                padding-bottom: 40px;
+            }
+            .nav-btn {
+                max-width: 100%;
+                padding: 18px 20px;
+                margin: 4px auto;
+            }
+            .bio {
+                font-size: 1.1rem;
+                padding: 15px;
+                margin: 10px 0;
+            }
+            .title {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
-<body>
-  <audio autoplay loop>
-    <source src="music.mp3" type="audio/mpeg">
-    Trình duyệt của bạn không hỗ trợ âm thanh.
-  </audio>
-  <div class="container">
-    <h1>Lê Trung Kiên</h1>
-    <div class="description">
-      <p>Xin chào! Tôi là Lê Trung Kiên, chuyên viên Roblox, phát triển công cụ, bot Discord, Tool và nhiều hơn nữa!</p>
-      <p>Chào mừng bạn đến với thế giới của tôi! Tôi là một nhà phát triển đam mê, chuyên tạo ra những trải nghiệm số tuyệt vời. Với tình yêu công nghệ và sáng tạo, tôi luôn tìm cách biến ý tưởng thành hiện thực.</p>
+<body class="dark-mode">
+    <div id="particles-js"></div>
+    <button id="theme-toggle" class="theme-toggle">
+        <svg id="moon-icon" class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg id="sun-icon" class="w-6 h-6 hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2a7 7 0 1 1 0-14 7 7 0 0 1 0 14zM12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+    </button>
+    <div class="container">
+        <img class="avatar mx-auto" src="avata.png" alt="Avatar Lê Trung Kiên">
+        <h1 class="title text-6xl font-bold mt-10 mb-4">Lê Trung Kiên</h1>
+        <div class="text-xl text-gray-300 text-center mb-6">Professional Coder & Developer</div>
+        <p class="bio">Xin chào! Mình là một lập trình viên yêu thích công nghệ, thiết kế UI/UX và phát triển hệ thống tự động hóa. Luôn học hỏi để cải tiến mỗi ngày!</p>
+        <div class="nav-buttons">
+            <a href="#" class="nav-btn">🔵 Thông tin cá nhân</a>
+            <a href="https://youtube.com" target="_blank" class="nav-btn">🎥 YouTube</a>
+            <a href="https://discord.gg/e6yjqPzWqT" target="_blank" class="nav-btn">💠 Discord</a>
+        </div>
     </div>
+    <footer class="footer">
+        <div class="footer-content">
+            @Website Made By <span class="footer-name">Lê Trung Kiên</span><span>💖</span> | 11:52 AM +07, Sunday, June 01, 2025
+        </div>
+    </footer>
+    <button id="back-to-top" class="back-to-top">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 4l-8 8h6v8h4v-8h6z"/></svg>
+    </button>
 
-    <div class="buttons">
-      <button class="btn"><span class="icon">🔵</span>Thông tin cá nhân</button>
-      <button class="btn"><span class="icon">🔵</span>Facebook / Messenger</button>
-      <button class="btn"><span class="icon">🎥</span>YouTube</button>
-    </div>
-  </div>
+    <script>
+        // Initialize particles.js
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 100, density: { enable: true, value_area: 800 } },
+                color: { value: ['#9333ea', '#22d3ee', '#f472b6'] },
+                shape: { type: 'circle' },
+                opacity: { value: 0.8, random: true },
+                size: { value: 6, random: true },
+                line_linked: { enable: true, distance: 80, color: '#a3bffa', opacity: 0.5, width: 1 },
+                move: { enable: true, speed: 4, direction: 'none', random: true, out_mode: 'out' }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' } },
+                modes: { repulse: { distance: 200, duration: 0.4 }, push: { particles_nb: 5 } }
+            },
+            retina_detect: true
+        });
+
+        // Star effect
+        function createStar() {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.innerHTML = '✨';
+            star.style.left = Math.random() * 100 + 'vw';
+            star.style.animationDuration = Math.random() * 4 + 4 + 's';
+            star.style.fontSize = Math.random() * 14 + 8 + 'px';
+            document.body.appendChild(star);
+            setTimeout(() => star.remove(), 5000);
+        }
+        setInterval(createStar, 150);
+
+        // GSAP animations
+        gsap.from('.avatar', { opacity: 0, scale: 0.5, duration: 2.2, ease: 'elastic.out(1, 0.3)' });
+        gsap.from('.text-xl', { opacity: 0, y: 50, duration: 1.5, delay: 0.7, ease: 'power4.out' });
+        gsap.from('.bio', { opacity: 0, y: 50, duration: 1.5, delay: 0.9, ease: 'power4.out' });
+        gsap.from('.nav-btn', { opacity: 0, y: 60, duration: 1.5, delay: 1.1, stagger: 0.2, ease: 'power4.out' });
+        gsap.from('.footer', { opacity: 0, y: 40, duration: 1.5, delay: 1.5, ease: 'power4.out' });
+
+        // Title slide-up with fade-in effect
+        const title = document.querySelector('.title');
+        setTimeout(() => {
+            title.classList.add('visible');
+        }, 500);
+
+        // Footer fade-in effect
+        const footerContent = document.querySelector('.footer-content');
+        setTimeout(() => {
+            footerContent.classList.add('visible');
+        }, 1500);
+
+        // Theme toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const moonIcon = document.getElementById('moon-icon');
+        const sunIcon = document.getElementById('sun-icon');
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('light-mode');
+            moonIcon.classList.toggle('hidden');
+            sunIcon.classList.toggle('hidden');
+            if (document.body.classList.contains('light-mode')) {
+                document.body.style.background = 'linear-gradient(135deg, #dbeafe, #e0e7ff, #f3e8ff)';
+                document.querySelectorAll('.nav-btn').forEach(btn => btn.style.background = 'linear-gradient(90deg, #60a5fa, #c4b5fd)');
+                document.querySelector('.theme-toggle').style.background = 'linear-gradient(45deg, #60a5fa, #c4b5fd)';
+                document.querySelector('.back-to-top').style.background = 'linear-gradient(45deg, #60a5fa, #c4b5fd)';
+                document.querySelector('.footer-content').style.background = 'linear-gradient(90deg, #60a5fa, #c4b5fd)';
+            } else {
+                document.body.style.background = 'linear-gradient(135deg, #030712, #0e1733, #1e2447)';
+                document.querySelectorAll('.nav-btn').forEach(btn => btn.style.background = 'linear-gradient(90deg, #9333ea, #a855f7)');
+                document.querySelector('.theme-toggle').style.background = 'linear-gradient(45deg, #9333ea, #22d3ee)';
+                document.querySelector('.back-to-top').style.background = 'linear-gradient(45deg, #9333ea, #22d3ee)';
+                document.querySelector('.footer-content').style.background = 'linear-gradient(90deg, #9333ea, #22d3ee)';
+            }
+        });
+
+        // Back to top button
+        const backToTop = document.getElementById('back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
 </body>
 </html>
