@@ -10,518 +10,541 @@
   <title>Lê Trung Kiên Bio</title>
   <link rel="icon" type="image/png" href="logo.png">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      -webkit-tap-highlight-color: transparent;
-    }
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+  }
 
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      color: #fff;
-      overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      position: relative;
-      background: #111;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: #fff;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    position: relative;
+    background: #111;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 
-    /* Video Background */
-    .video-background {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: -2;
-      will-change: transform;
-    }
+  /* Video Background */
+  .video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+    will-change: transform;
+  }
 
-    /* Blur Overlay */
-    .blur-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.00001);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      z-index: -1;
-      will-change: backdrop-filter;
-    }
+  /* Blur Overlay */
+  .blur-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.00001);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    z-index: -1;
+    will-change: backdrop-filter;
+  }
 
-    /* Container */
+  /* Container */
+  .container {
+    text-align: center;
+    padding: 30px;
+    max-width: 700px;
+    width: 90%;
+    z-index: 1;
+    animation: fadeIn 1.5s ease-out;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    transform: translateY(0);
+    transition: transform 0.4s ease-out;
+  }
+
+  /* Parallax Effect */
+  .parallax {
+    transform: translateY(var(--parallax-y, 0)) translateX(var(--parallax-x, 0));
+  }
+
+  /* Animation Keyframes */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes gradientRotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
+
+  /* Avatar Container */
+  .avatar-container {
+    position: relative;
+    width: 160px;
+    height: 160px;
+    margin: 0 auto 25px;
+    transition: transform 0.5s ease;
+  }
+
+  .avatar-container:hover {
+    transform: scale(1.12);
+    animation: pulse 1.5s infinite ease-in-out;
+  }
+
+  .avatar {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 2;
+    border: 3px solid rgba(255, 255, 255, 0.9);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+  }
+
+  .avatar-frame {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #ff3366, #4ecdc4, #6b48ff, #ff3366);
+    box-shadow: 0 15px 60px rgba(0, 0, 0, 0.7);
+    animation: gradientRotate 8s linear infinite;
+    z-index: 1;
+  }
+
+  /* Bio */
+  .bio h1 {
+    font-size: 2.2rem;   /* nhỏ hơn chữ hiện tại (2.5rem) */
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
+    background: linear-gradient(90deg, #ff3366, #4ecdc4, #6b48ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .bio p {
+    font-size: 1.2rem;
+    color: #e0e0e0;
+    line-height: 1.7;
+    margin-top: 20px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0;
+    animation: fadeIn 1.8s ease-out forwards;
+    animation-delay: 0.3s;
+  }
+
+  .nav-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-top: 25px;
+   }
+
+  /* Hàng trên 3 nút đều nhau */
+  .nav-buttons .top-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+  }
+
+  /* Hàng dưới 2 nút căn giữa */
+  .nav-buttons .bottom-row {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .liquid-glass-button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 30px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 40px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    will-change: transform;
+    cursor: pointer;
+    touch-action: manipulation;
+  }
+
+  .liquid-glass-button:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
+  }
+
+  .liquid-glass-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+    transition: left 0.9s ease;
+    z-index: -1;
+  }
+
+  .liquid-glass-button:hover::before {
+    left: 100%;
+  }
+
+  /* Music Player */
+  .music-player {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 25px;
+    padding: 6px 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    opacity: 0;
+    animation: fadeIn 1.8s ease-out forwards;
+    animation-delay: 0.5s;
+  }
+
+  .music-toggle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    touch-action: manipulation;
+  }
+
+  .music-toggle:hover {
+    transform: scale(1.12);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+  }
+
+  .music-toggle::before {
+    content: '▶';
+    font-size: 20px;
+    color: #fff;
+  }
+
+  .music-toggle.playing::before {
+    content: '⏸';
+  }
+
+  .volume-control {
+    width: 100px;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 6px;
+    border-radius: 3px;
+    background: linear-gradient(to right, #4ecdc4 0%, #4ecdc4 var(--volume-progress, 50%), rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0.25) 100%);
+    outline: none;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+    cursor: pointer;
+    touch-action: manipulation;
+  }
+
+  .volume-control:hover {
+    opacity: 1;
+  }
+
+  .volume-control::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #4ecdc4;
+    cursor: pointer;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.5);
+  }
+
+  .volume-control::-moz-range-thumb {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #4ecdc4;
+    cursor: pointer;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Footer */
+  .footer {
+    margin-top: 40px;
+    font-size: 1rem;
+    color: #ccc;
+    text-shadow: 0 3px 6px rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    opacity: 0;
+    animation: fadeIn 1.8s ease-out forwards;
+    animation-delay: 0.6s;
+  }
+
+  .footer a {
+    color: #4ecdc4;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    cursor: pointer;
+    touch-action: manipulation;
+  }
+
+  .footer a:hover {
+    color: #ff3366;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
     .container {
-      text-align: center;
-      padding: 30px;
-      max-width: 700px;
-      width: 90%;
-      z-index: 1;
-      animation: fadeIn 1.5s ease-out;
-      background: rgba(255, 255, 255, 0.12);
-      border-radius: 20px;
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      backdrop-filter: blur(15px);
-      -webkit-backdrop-filter: blur(15px);
-      transform: translateY(0);
-      transition: transform 0.4s ease-out;
+      padding: 25px;
     }
 
-    /* Parallax Effect */
-    .parallax {
-      transform: translateY(var(--parallax-y, 0)) translateX(var(--parallax-x, 0));
-    }
-
-    /* Animation Keyframes */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(40px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes gradientRotate {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); }
-    }
-
-    /* Avatar Container */
-    .avatar-container {
-      position: relative;
-      width: 160px;
-      height: 160px;
-      margin: 0 auto 25px;
-      transition: transform 0.5s ease;
-    }
-
-    .avatar-container:hover {
-      transform: scale(1.12);
-      animation: pulse 1.5s infinite ease-in-out;
+    .avatar-container, .avatar-frame {
+      width: 140px;
+      height: 140px;
     }
 
     .avatar {
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      object-fit: cover;
-      position: absolute;
+      width: 120px;
+      height: 120px;
       top: 10px;
       left: 10px;
-      z-index: 2;
-      border: 3px solid rgba(255, 255, 255, 0.9);
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
     }
 
-    .avatar-frame {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      background: linear-gradient(45deg, #ff3366, #4ecdc4, #6b48ff, #ff3366);
-      box-shadow: 0 15px 60px rgba(0, 0, 0, 0.7);
-      animation: gradientRotate 8s linear infinite;
-      z-index: 1;
-    }
-
-    /* Bio */
     .bio {
-      font-size: 2.5rem;
-      font-weight: 700;
-      margin-bottom: 20px;
-      text-shadow: 0 5px 15px rgba(0, 0, 0, 0.8);
-      background: linear-gradient(90deg, #ff3366, #4ecdc4, #6b48ff);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+      font-size: 2rem;
     }
 
     .bio p {
-      font-size: 1.2rem;
-      color: #e0e0e0;
-      line-height: 1.7;
-      margin-top: 20px;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-      opacity: 0;
-      animation: fadeIn 1.8s ease-out forwards;
-      animation-delay: 0.3s;
+      font-size: 1.1rem;
     }
 
-    /* Liquid Glass Buttons */
-    .nav-buttons {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 15px;
-      margin-top: 25px;
-      justify-content: center;
-    }
-
-    .liquid-glass-button {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 12px 30px;
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 40px;
-      overflow: hidden;
-      background: rgba(255, 255, 255, 0.18);
-      border: 1px solid rgba(255, 255, 255, 0.35);
-      backdrop-filter: blur(15px);
-      -webkit-backdrop-filter: blur(15px);
-      transition: transform 0.5s ease, box-shadow 0.5s ease;
-      will-change: transform;
-      cursor: pointer;
-      touch-action: manipulation;
-    }
-
-    .liquid-glass-button:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
-    }
-
-    .liquid-glass-button::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
-      transition: left 0.9s ease;
-      z-index: -1;
-    }
-
-    .liquid-glass-button:hover::before {
-      left: 100%;
-    }
-
-    /* Music Player */
     .music-player {
-      position: fixed;
-      top: 15px;
-      right: 15px;
-      z-index: 10;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 25px;
-      padding: 6px 10px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      opacity: 0;
-      animation: fadeIn 1.8s ease-out forwards;
-      animation-delay: 0.5s;
-    }
-
-    .music-toggle {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.2);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      touch-action: manipulation;
-    }
-
-    .music-toggle:hover {
-      transform: scale(1.12);
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
-    }
-
-    .music-toggle::before {
-      content: '▶';
-      font-size: 20px;
-      color: #fff;
-    }
-
-    .music-toggle.playing::before {
-      content: '⏸';
+      top: 12px;
+      right: 12px;
+      padding: 5px 8px;
     }
 
     .volume-control {
+      width: 90px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .container {
+      padding: 20px;
+    }
+
+    .avatar-container, .avatar-frame {
+      width: 120px;
+      height: 120px;
+    }
+
+    .avatar {
       width: 100px;
-      -webkit-appearance: none;
-      appearance: none;
-      height: 6px;
-      border-radius: 3px;
-      background: linear-gradient(to right, #4ecdc4 0%, #4ecdc4 var(--volume-progress, 50%), rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0.25) 100%);
-      outline: none;
-      opacity: 0.8;
-      transition: opacity 0.3s ease;
-      cursor: pointer;
-      touch-action: manipulation;
+      height: 100px;
+      top: 10px;
+      left: 10px;
     }
 
-    .volume-control:hover {
-      opacity: 1;
+    .bio {
+      font-size: 1.7rem;
     }
 
-    .volume-control::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: #4ecdc4;
-      cursor: pointer;
-      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.5);
-    }
-
-    .volume-control::-moz-range-thumb {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: #4ecdc4;
-      cursor: pointer;
-      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.5);
-    }
-
-    /* Autoplay Notification */
-    .autoplay-notification {
-      position: fixed;
-      bottom: 15px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(255, 255, 255, 0.15);
-      border-radius: 10px;
-      padding: 10px 15px;
-      color: #fff;
-      font-size: 0.85rem;
-      z-index: 10;
-      opacity: 0;
-      transition: opacity 0.5s ease, transform 0.5s ease;
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      display: none;
-      max-width: 85%;
-      text-align: center;
-    }
-
-    .autoplay-notification.show {
-      display: flex;
-      align-items: center;
-      opacity: 1;
-      transform: translateX(-50%) translateY(0);
-    }
-
-    .autoplay-notification button {
-      background: #4ecdc4;
-      border: none;
-      border-radius: 5px;
-      padding: 6px 12px;
-      color: #fff;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.3s ease;
-      margin-left: 10px;
-    }
-
-    .autoplay-notification button:hover {
-      background: #ff3366;
-    }
-
-    /* Footer */
-    .footer {
-      margin-top: 40px;
+    .bio p {
       font-size: 1rem;
-      color: #ccc;
-      text-shadow: 0 3px 6px rgba(0, 0, 0, 0.6);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 10px;
-      opacity: 0;
-      animation: fadeIn 1.8s ease-out forwards;
-      animation-delay: 0.6s;
     }
 
-    .footer a {
-      color: #4ecdc4;
-      text-decoration: none;
-      transition: color 0.3s ease;
-      cursor: pointer;
-      touch-action: manipulation;
+    .nav-buttons {
+      grid-template-columns: 1fr;
+      gap: 12px;
     }
 
-    .footer a:hover {
-      color: #ff3366;
+    .liquid-glass-button {
+      padding: 10px 25px;
+      font-size: 1.1rem;
     }
 
-    /* Responsive */
-    @media (max-width: 768px) {
-      .container {
-        padding: 25px;
-      }
-
-      .avatar-container, .avatar-frame {
-        width: 140px;
-        height: 140px;
-      }
-
-      .avatar {
-        width: 120px;
-        height: 120px;
-        top: 10px;
-        left: 10px;
-      }
-
-      .bio {
-        font-size: 2rem;
-      }
-
-      .bio p {
-        font-size: 1.1rem;
-      }
-
-      .music-player {
-        top: 12px;
-        right: 12px;
-        padding: 5px 8px;
-      }
-
-      .volume-control {
-        width: 90px;
-      }
-
-      .autoplay-notification {
-        font-size: 0.8rem;
-        padding: 8px 12px;
-      }
+    .footer {
+      font-size: 0.9rem;
     }
 
-    @media (max-width: 480px) {
-      .container {
-        padding: 20px;
-      }
-
-      .avatar-container, .avatar-frame {
-        width: 120px;
-        height: 120px;
-      }
-
-      .avatar {
-        width: 100px;
-        height: 100px;
-        top: 10px;
-        left: 10px;
-      }
-
-      .bio {
-        font-size: 1.7rem;
-      }
-
-      .bio p {
-        font-size: 1rem;
-      }
-
-      .nav-buttons {
-        grid-template-columns: 1fr;
-        gap: 12px;
-      }
-
-      .liquid-glass-button {
-        padding: 10px 25px;
-        font-size: 1.1rem;
-      }
-
-      .footer {
-        font-size: 0.9rem;
-      }
-
-      .music-player {
-        flex-direction: column;
-        gap: 8px;
-        padding: 4px 6px;
-      }
-
-      .music-toggle {
-        width: 36px;
-        height: 36px;
-      }
-
-      .music-toggle::before {
-        font-size: 18px;
-      }
-
-      .volume-control {
-        width: 70px;
-        height: 5px;
-      }
-
-      .volume-control::-webkit-slider-thumb,
-      .volume-control::-moz-range-thumb {
-        width: 10px;
-        height: 10px;
-      }
-
-      .autoplay-notification {
-        font-size: 0.75rem;
-        padding: 6px 10px;
-      }
+    .music-player {
+      flex-direction: column;
+      gap: 8px;
+      padding: 4px 6px;
     }
 
-    @media (max-width: 360px) {
-      .container {
-        padding: 15px;
-      }
-
-      .avatar-container, .avatar-frame {
-        width: 100px;
-        height: 100px;
-      }
-
-      .avatar {
-        width: 80px;
-        height: 80px;
-        top: 10px;
-        left: 10px;
-      }
-
-      .bio {
-        font-size: 1.5rem;
-      }
-
-      .bio p {
-        font-size: 0.9rem;
-      }
-
-      .volume-control {
-        width: 60px;
-      }
-
-      .autoplay-notification {
-        font-size: 0.7rem;
-        padding: 5px 8px;
-      }
+    .music-toggle {
+      width: 36px;
+      height: 36px;
     }
-  </style>
+
+    .music-toggle::before {
+      font-size: 18px;
+    }
+
+    .volume-control {
+      width: 70px;
+      height: 5px;
+    }
+
+    .volume-control::-webkit-slider-thumb,
+    .volume-control::-moz-range-thumb {
+      width: 10px;
+      height: 10px;
+    }
+  }
+
+  @media (max-width: 360px) {
+    .container {
+      padding: 15px;
+    }
+
+    .avatar-container, .avatar-frame {
+      width: 100px;
+      height: 100px;
+    }
+
+    .avatar {
+      width: 80px;
+      height: 80px;
+      top: 10px;
+      left: 10px;
+    }
+
+    .bio {
+      font-size: 1.5rem;
+    }
+
+    .bio p {
+      font-size: 0.9rem;
+    }
+
+    .volume-control {
+      width: 60px;
+    }
+  }
+
+  .container {
+    text-align: center;
+    padding: 30px;
+    max-width: 700px;
+    width: 90%;
+    z-index: 1;
+    animation: fadeIn 1.5s ease-out;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+  }
+
+  .liquid-glass-button {
+    background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+    border: 1px solid rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+  }
+ 
+  .footer {
+    margin-top: 40px;
+    font-size: 1rem;
+    color: rgba(230,230,230,0.9);
+    text-shadow: 0 3px 10px rgba(0,0,0,0.6);
+    background: rgba(255,255,255,0.05);
+    padding: 10px 15px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  .avatar-frame {
+    position: absolute;
+    top: 0; left: 0;
+    width: 160px; height: 160px;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg, #ff3366, #4ecdc4, #6b48ff, #ff3366);
+    animation: spin 8s linear infinite;
+    z-index: 1;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .bio {
+    font-size: 2.5rem;
+    font-weight: 800;
+    background: linear-gradient(90deg, #ff3366, #4ecdc4, #6b48ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 6px 20px rgba(0,0,0,0.6);
+    opacity: 0;
+    animation: fadeUp 1s ease forwards;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: none; }
+  }
+  
+  .liquid-glass-button img {
+    width: 22px;
+    height: 22px;
+    margin-right: 8px;
+  }
+
+</style>
 </head>
 <body>
   <video class="video-background" autoplay muted loop playsinline preload="auto">
@@ -536,46 +559,50 @@
     </div>
     <div class="bio">
       <h1>Lê Trung Kiên</h1>
-      <p>Xin chào! Tôi là Kiên, một học sinh lớp 10 đam mê học hỏi nhiều điều mới lạ,bổ ích... Mọi người hãy ghé qua fanpages và tiktok của lớp tui nhen💖.</p>
+      <p>Xin chào! Tôi là Kiên, một học sinh lớp 10 đam mê học hỏi nhiều điều mới lạ, bổ ích...</p>
     </div>
     <div class="nav-buttons">
+      <div class="top-row">
       <a href="https://www.facebook.com/profile.php?id=61578651402864" class="liquid-glass-button" target="_blank" rel="noopener noreferrer">
-        <img src="Facebook.png" alt="Facebook" style="height:24px;vertical-align:middle;margin-right:8px;">
-        Facebook
+        <img src="Facebook.png" alt="Facebook" style="height:24px;vertical-align:middle;margin-right:8px;">My Facebook
       </a>
-      <a href="https://discord.gg/MEZfgwhX9c" class="liquid-glass-button" target="_blank" rel="noopener noreferrer">
-        <img src="Discord.png" alt="Discord" style="height:24px;vertical-align:middle;margin-right:8px;">
-        Discord
+      <a href="https://github.com/jayetcixgaming2010" class="liquid-glass-button" target="_blank" rel="noopener noreferrer">
+        <img src="Github.png" alt="Github" style="height:24px;vertical-align:middle;margin-right:8px;">My Github
+      </a>
+      <a href="https://www.tiktok.com/@letrungkiendz_2k10" class="liquid-glass-button" target="_blank" rel="noopener noreferrer">
+        <img src="Tiktok.png" alt="Tiktok" style="height:24px;vertical-align:middle;margin-right:8px;">My Tiktok
+      </a>
+    </div>
+
+      <div class="bottom-row"></div>
+      <a href="https://www.facebook.com/profile.php?id=61578651402864" class="liquid-glass-button" target="_blank" rel="noopener noreferrer">
+        <img src="Facebook.png" alt="Facebook" style="height:24px;vertical-align:middle;margin-right:8px;">Fanpages Class
       </a>
       <a href="https://www.tiktok.com/@10a2k26thptquelam" class="liquid-glass-button" target="_blank" rel="noopener noreferrer">
-        <img src="Tiktok.png" alt="Tiktok" style="height:24px;vertical-align:middle;margin-right:8px;">
-        Tiktok
+        <img src="Tiktok.png" alt="Tiktok" style="height:24px;vertical-align:middle;margin-right:8px;">Tiktok Class
       </a>
     </div>
     <div class="footer">
-      <span>@Made by <a href="https://www.facebook.com/le.trung.kien.2k10/" target="_blank" rel="noopener noreferrer">Kiên</a> with 💖 | 2025</span>
+      <span>@Made by <a href="https://www.facebook.com/le.trung.kien.2k10/" target="_blank">Kiên</a> with 💖 | 2025</span>
     </div>
   </div>
   <div class="music-player">
     <div class="music-toggle playing" id="musicToggle"></div>
     <input type="range" min="0" max="1" step="0.01" value="0.5" class="volume-control" id="volumeControl">
   </div>
-    <div class="autoplay-notification" id="autoplayNotification">
-    Nhạc nền bị chặn. Nhấn để phát! <button onclick="playMusic()">Phát nhạc</button>
-  </div>
-  <audio id="backgroundMusic" autoplay loop preload="auto">
+  <audio id="backgroundMusic" autoplay loop preload="auto" playsinline>
     <source src="music.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
   </audio>
+
+
   <script>
     // Initialize elements
     const video = document.querySelector('.video-background');
     const music = document.getElementById('backgroundMusic');
     const musicToggle = document.getElementById('musicToggle');
     const volumeControl = document.getElementById('volumeControl');
-    const autoplayNotification = document.getElementById('autoplayNotification');
     const buttons = document.querySelectorAll('.liquid-glass-button');
-    let isPlaying = true;
+    let isPlaying = false;
 
     // Video playback
     function initVideo() {
@@ -593,23 +620,8 @@
       volumeControl.value = savedVolume;
       volumeControl.style.setProperty('--volume-progress', `${savedVolume * 100}%`);
 
-      // Attempt to play music immediately
-      const playAttempt = music.play();
-      if (playAttempt !== undefined) {
-        playAttempt.catch(error => {
-          console.log('Music autoplay failed:', error.message);
-          musicToggle.classList.remove('playing');
-          isPlaying = false;
-          autoplayNotification.classList.add('show');
-          setTimeout(() => {
-            autoplayNotification.classList.remove('show');
-          }, 8000);
-        });
-      }
-
-      ['click', 'pointerdown', 'touchstart', 'keydown'].forEach(eventType => {
-        document.addEventListener(eventType, playMusicOnFirstInteraction, { once: true, passive: true });
-      });
+      // Phát nhạc ngay khi vào web
+      music.play().catch(err => console.log("Autoplay bị chặn:", err));
 
       musicToggle.addEventListener('click', playMusic);
 
@@ -620,25 +632,21 @@
       });
     }
 
-    // Play music on first user interaction
-    function playMusicOnFirstInteraction() {
+    // Cho phép click bất kỳ đâu để bật nhạc nếu đang pause
+    document.body.addEventListener('click', () => {
       if (!isPlaying) {
         music.play().then(() => {
           musicToggle.classList.add('playing');
-          autoplayNotification.classList.remove('show');
           isPlaying = true;
-        }).catch(error => {
-          console.log('Music play failed on interaction:', error.message);
-        });
+        }).catch(err => console.log("Play failed:", err));
       }
-    }
+    }, { once: true });
 
     // Play/pause music function
     function playMusic() {
       if (!isPlaying) {
         music.play().then(() => {
           musicToggle.classList.add('playing');
-          autoplayNotification.classList.remove('show');
           isPlaying = true;
         }).catch(error => {
           console.log('Music play failed:', error.message);
@@ -649,6 +657,7 @@
         isPlaying = false;
       }
     }
+
 
     // Button click effect
     function initButtons() {
@@ -698,7 +707,16 @@
         music.play().catch(error => console.log('Music resume failed:', error.message));
       }
     });
+
+    //Giữ trạng thái phát nhạc khi chuyển tab
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'hidden' && isPlaying) {
+        music.pause();
+      } else if (document.visibilityState === 'visible' && isPlaying) {
+        music.play().catch(error => console.log('Resume failed:', error));
+      }
+    });
+
   </script>
 </body>
-
 </html>
