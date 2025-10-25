@@ -64,50 +64,8 @@ Website này được mình xây dựng để:
 │   ├── main.js         # Script chính
 │   └── aos.js          # Hiệu ứng cuộn
 └── README.md
-🎯 Mục tiêu & kế hoạch tương lai
- 📝 Thêm phần Blog chia sẻ kiến thức về lập trình
 
- 🔗 Hiển thị các dự án GitHub tự động qua API
-
- 💡 Cập nhật Dark Mode / Light Mode switch
-
- 🎨 Cải thiện hiệu ứng và UX tổng thể
-
- 🌍 Đa ngôn ngữ (English / Vietnamese)
-
-💻 Preview
-🖼 Bạn có thể thêm ảnh chụp website tại đây (dạng screenshot hoặc banner)
-Ví dụ:
-
-<p align="center"> <img src="https://i.imgur.com/example-banner.png" width="80%" alt="Website Preview" /> </p>
-🚀 Cách cài đặt & chạy local
-Nếu bạn muốn clone và tùy chỉnh website:
-
-bash
-Sao chép mã
-# 1️⃣ Clone repository
-git clone https://github.com/jayetcixgaming2010/letrungkienprofiles.git
-
-# 2️⃣ Mở thư mục
-cd letrungkienprofiles
-
-# 3️⃣ Mở file index.html bằng trình duyệt
-Không cần server hoặc framework – chỉ cần trình duyệt là có thể chạy được ngay ⚡
-
-🧑‍🤝‍🧑 Cách đóng góp
-Mọi đóng góp đều được hoan nghênh!
-
-Fork repo này
-
-Tạo branch mới: git checkout -b feature/your-feature
-
-Commit thay đổi: git commit -m "Add new feature"
-
-Push branch: git push origin feature/your-feature
-
-Mở Pull Request để được review ✨
-
-👨‍🎨 Tác giả
+## 👨‍🎨 Tác giả
 Lê Trung Kiên
 🎓 Học sinh – yêu thích lập trình, thiết kế và sáng tạo
 💻 GitHub: @jayetcixgaming2010
