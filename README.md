@@ -16,6 +16,7 @@
 
 Xin chào! Mình là **Lê Trung Kiên** 👋 — học sinh cấp 3 đang theo đuổi đam mê **lập trình web và thiết kế giao diện người dùng**.  
 Website này được mình xây dựng để:
+
 - Giới thiệu bản thân và kỹ năng lập trình 🧠  
 - Trưng bày các dự án đã và đang làm 💻  
 - Chia sẻ hành trình học code và khám phá công nghệ mới 🌱  
@@ -64,8 +65,7 @@ Website này được mình xây dựng để:
 │   ├── main.js         # Script chính
 │   └── aos.js          # Hiệu ứng cuộn
 └── README.md
-
----
+```
 
 ## 👨‍🎨 Tác giả
 Lê Trung Kiên
@@ -80,4 +80,5 @@ Lê Trung Kiên
 Dự án được phát hành theo MIT License.
 Bạn có thể tự do sử dụng, chỉnh sửa và phân phối — chỉ cần ghi công cho tác giả gốc.
 
+---
 <p align="center"> <b>⭐ Nếu bạn thấy dự án này thú vị, đừng quên thả một ngôi sao trên GitHub nhé!</b><br><br> Made with ❤️ by <a href="https://letrungkienprofiles.netlify.app/">Lê Trung Kiên</a> </p> ```
