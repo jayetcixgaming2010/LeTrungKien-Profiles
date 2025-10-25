@@ -65,6 +65,8 @@ Website này được mình xây dựng để:
 │   └── aos.js          # Hiệu ứng cuộn
 └── README.md
 
+---
+
 ## 👨‍🎨 Tác giả
 Lê Trung Kiên
 🎓 Học sinh – yêu thích lập trình, thiết kế và sáng tạo
@@ -72,7 +74,9 @@ Lê Trung Kiên
 🌐 Website: letrungkienprofiles.netlify.app
 📧 Liên hệ: Đang cập nhật...
 
-🪪 Giấy phép
+---
+
+## 🪪 Giấy phép
 Dự án được phát hành theo MIT License.
 Bạn có thể tự do sử dụng, chỉnh sửa và phân phối — chỉ cần ghi công cho tác giả gốc.
 
